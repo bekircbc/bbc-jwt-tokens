@@ -1,0 +1,76 @@
+@API_URL = http://localhost:5000
+@TOKEN = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MmZmODk2OTJhYzA5NTk1YTY4OTI4ZDkiLCJlbWFpbCI6Impha29iQGpha2UuY29tIiwiaWF0IjoxNjYwOTE1MTYzLCJleHAiOjE2NjA5MTUyODN9.TVzcvGUMXieDY7O6dRbTdP7INVXqoodmQ2YCtaJywYI
+
+### HOME ROUTE
+GET {{API_URL}}
+
+### Get all animals
+GET {{API_URL}}/animals
+Authorization: {{TOKEN}}
+
+### Get single animal
+GET {{API_URL}}/animals/62f65806818b423db4abaa42
+Authorization: {{TOKEN}}
+
+### Get single animal (faulty)
+GET {{API_URL}}/animals/undefined
+Authorization: {{TOKEN}}
+
+
+### Create animal
+POST {{API_URL}}/animals
+Content-Type: application/json
+Authorization: {{TOKEN}}
+
+{
+  "name": "Sneezing Sloth"
+}
+
+### Create FAULTY
+POST {{API_URL}}/animals
+Content-Type: application/json
+Authorization: {{TOKEN}}
+
+{
+  "username": "Terrific Trex"
+}
+
+### UPDATE animal
+PATCH {{API_URL}}/animals/62f6541fdac3237496f6c955
+Content-Type: application/json
+Authorization: {{TOKEN}}
+
+{
+  "name": "Crazy Chamaleon",
+  "age": 77
+}
+
+### DELETE animal
+DELETE {{API_URL}}/animals/62f6541fdac3237496f6c955
+Authorization: {{TOKEN}}
+
+### 404 route
+GET {{API_URL}}/not-available
+
+
+
+# User routes
+
+### User Signup
+POST {{API_URL}}/users
+Content-Type: application/json
+
+{
+  "username": "jakob",
+  "email": "jakob@jake.com",
+  "password": "jake123"
+}
+
+### User Login
+POST {{API_URL}}/users/login
+Content-Type: application/json
+
+{
+  "email": "jakob@jake.com",
+  "password": "jake123"
+}
